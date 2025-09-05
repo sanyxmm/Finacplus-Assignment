@@ -1,4 +1,3 @@
-const ASSETS_BASE = import.meta.env.VITE_ASSETS;
 
 export const mockSongs = [
   {
@@ -7,7 +6,7 @@ export const mockSongs = [
     artist: 'Neon Dreams',
     album: 'Digital Horizons',
     duration: '4:12',
-    albumArt: `${ASSETS_BASE}album-1.jpg`,
+    albumArt: '/album-1.jpg',
     year: 2023,
   },
   {
@@ -16,7 +15,7 @@ export const mockSongs = [
     artist: 'Neon Dreams',
     album: 'Digital Horizons',
     duration: '3:45',
-    albumArt: `${ASSETS_BASE}album-1.jpg`,
+    albumArt: '/album-1.jpg',
     year: 2023,
   },
   {
@@ -25,7 +24,7 @@ export const mockSongs = [
     artist: 'The Wanderers',
     album: 'Golden Hour',
     duration: '3:28',
-    albumArt: `${ASSETS_BASE}album-1.jpg`,
+    albumArt: '/album-1.jpg',
     year: 2022,
   },
   {
@@ -34,7 +33,7 @@ export const mockSongs = [
     artist: 'The Wanderers',
     album: 'Golden Hour',
     duration: '4:02',
-    albumArt: `${ASSETS_BASE}album-2.jpg`,
+    albumArt: `album-2.jpg`,
     year: 2022,
   },
   {
@@ -43,7 +42,7 @@ export const mockSongs = [
     artist: 'Marcus Cole Trio',
     album: 'After Midnight',
     duration: '6:15',
-    albumArt: `${ASSETS_BASE}album-2.jpg`,
+    albumArt: `album-2.jpg`,
     year: 2021,
   },
   {
@@ -52,7 +51,7 @@ export const mockSongs = [
     artist: 'Marcus Cole Trio',
     album: 'After Midnight',
     duration: '5:33',
-    albumArt: `${ASSETS_BASE}album-3.jpg`,
+    albumArt: `album-3.jpg`,
     year: 2021,
   },
   {
@@ -61,7 +60,7 @@ export const mockSongs = [
     artist: 'Luna Pop',
     album: 'Starlight Sessions',
     duration: '3:15',
-    albumArt: `${ASSETS_BASE}album-3.jpg`,
+    albumArt: `album-3.jpg`,
     year: 2024,
   },
   {
@@ -70,7 +69,7 @@ export const mockSongs = [
     artist: 'Luna Pop',
     album: 'Starlight Sessions',
     duration: '3:52',
-    albumArt: `${ASSETS_BASE}album-3.jpg`,
+    albumArt: `album-3.jpg`,
     year: 2024,
   },
   {
@@ -79,7 +78,7 @@ export const mockSongs = [
     artist: 'Synthwave Collective',
     album: 'Digital Dreams',
     duration: '4:28',
-    albumArt: `${ASSETS_BASE}album-4.jpg`,
+    albumArt: `album-4.jpg`,
     year: 2023,
   },
   {
@@ -88,7 +87,7 @@ export const mockSongs = [
     artist: 'Indie Folk Band',
     album: 'Simple Pleasures',
     duration: '3:41',
-    albumArt: `${ASSETS_BASE}album-4.jpg`,
+    albumArt: `album-4.jpg`,
     year: 2022,
   },
 ];
