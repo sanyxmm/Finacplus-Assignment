@@ -1,10 +1,6 @@
 import { useState } from "react";
-import album1 from "../../public/album-1.jpg";
-import album2 from "../../public/album-2.jpg";
-import album3 from "../../public/album-3.jpg";
-import album4 from "../../public/album-4.jpg";
 
-const albumOptions = [album1, album2, album3, album4];
+const albumOptions = ['album-1.jpg', 'album-2.jpg',' album-3.jpg', 'album-4.jpg'];
 
 export const AddSongDialog = ({ open, onOpenChange, onAddSong }) => {
   const [formData, setFormData] = useState({
@@ -21,7 +17,7 @@ export const AddSongDialog = ({ open, onOpenChange, onAddSong }) => {
 
     const randomAlbumArt = albumOptions[Math.floor(Math.random() * albumOptions.length)];
 
-    onAddSong({ ...formData, albumArt: randomAlbumArt });
+    onAddSong({ ...formData,  albumArt: `/${randomAlbumArt}` });
 
     setFormData({
       title: "",
