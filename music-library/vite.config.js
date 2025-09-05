@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import federation from '@originjs/vite-plugin-federation'
 
 export default defineConfig({
@@ -11,15 +11,19 @@ export default defineConfig({
       name: 'music_library',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/App.jsx'
+        './App': './src/App.jsx', // expose main App
       },
-      shared: ['react', 'react-dom']
-    })
+      shared: ['react', 'react-dom', 'tailwindcss'], // ensure shared
+    }),
   ],
-  server: {
-    port: 5001, // runs on 5001
-  },
+  server: { port: 5001 },
   build: {
-    target: 'esnext'
-  }
+    target: 'esnext',
+    cssCodeSplit: false, // ensure Tailwind CSS bundled inside remoteEntry.js
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]', // images proper path
+      },
+    },
+  },
 })

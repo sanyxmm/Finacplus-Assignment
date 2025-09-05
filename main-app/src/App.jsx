@@ -1,93 +1,96 @@
-import React, { useState } from "react";
-import { login, logout, getRole } from "./auth";
+import React, { useState ,Suspense } from "react";
+import { login, logout } from "./auth";
+import { mockSongs } from './data/mockSongs';
+
+import "./index.css";
 
 const MusicLibrary = React.lazy(() => import("music_library/App"));
 
-const initialSongs = [
-  { id: 1, title: "Song A", artist: "Artist 1", album: "Album X" },
-  { id: 2, title: "Song B", artist: "Artist 2", album: "Album Y" },
-  { id: 3, title: "Song C", artist: "Artist 1", album: "Album Z" },
-  { id: 4, title: "Song D", artist: "Artist 2", album: "Album q"},
-];
+export default function App() {
+  const [songs,setSongs] = useState(mockSongs)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState(""); // to store logged-in role
+  const [error, setError] = useState("");
 
-function App() {
-  const [role, setRole] = useState(getRole());
-  const [songs, setSongs] = useState(initialSongs);
-
-  // Add Song
-  const addSong = () => {
-    const newSong = {
-      id: Date.now(),
-      title: `Song ${songs.length + 1}`,
-      artist: "New Artist",
-      album: "New Album",
-    };
-    setSongs((prev) => [...prev, newSong]);
+  // Hardcoded credentials
+  const credentials = {
+    admin: { id: "admin", password: "admin123" },
+    user: { id: "user", password: "user123" },
   };
-
-  // Delete Song
-  const deleteSong = (id) => {
-    setSongs((prev) => prev.filter((song) => song.id !== id));
+ const handleDeleteSong = (id) => setSongs(songs.filter((s) => s.id !== id));
+ 
+   const handleAddSong = (newSong) => {
+     setSongs([...songs, { ...newSong, id: Math.random().toString(36).substr(2, 9) }]);
+   };
+  const handleLogin = () => {
+    if (username === credentials.admin.id && password === credentials.admin.password) {
+      setRole("admin");
+      login("admin");
+      setError("");
+    } else if (username === credentials.user.id && password === credentials.user.password) {
+      setRole("user");
+      login("user");
+      setError("");
+    } else {
+      setError("Invalid username or password");
+    }
   };
-
-  const handleLogin = (r) => {
-    login(r);
-    setRole(r);
-  };
-
   const handleLogout = () => {
     logout();
     setRole(null);
   };
 
+
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center text-indigo-600">
-          🎵 Main App (Container)
-        </h1>
-
-        {!role ? (
-          <div className="flex flex-col space-y-3">
-            <p className="text-gray-700 text-center">Select role to login:</p>
-            <button
-              onClick={() => handleLogin("admin")}
-              className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
-            >
-              Login as Admin
-            </button>
-            <button
-              onClick={() => handleLogin("user")}
-              className="p-2 bg-green-500 hover:bg-green-600 text-white rounded"
-            >
-              Login as User
-            </button>
-          </div>
-        ) : (
-          <div className="flex flex-col space-y-4">
-            <p className="text-center text-gray-800">
-              Logged in as: <b>{role}</b>
-            </p>
-            <button
-              onClick={handleLogout}
-              className="p-2 bg-red-500 hover:bg-red-600 text-white rounded"
-            >
-              Logout
-            </button>
-
-            <React.Suspense fallback={<p className="text-center">Loading Music Library...</p>}>
-              <MusicLibrary
-                songs={songs}
-                addSong={addSong}
-                deleteSong={deleteSong}
-                role={role}
-              />
-            </React.Suspense>
-          </div>
-        )}
-      </div>
+    <div>
+         {!role?(<div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-8 rounded-2xl shadow-md w-96"
+      >
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <div className="mb-4">
+          <label className="block mb-1 font-semibold">Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block mb-1 font-semibold">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+      </form>
+    </div>):(<div className="pt-10 px-6">
+        <Suspense fallback={<div>Loading music library...</div>}>
+          <MusicLibrary 
+          userRole={role} 
+          handleLogout={handleLogout} 
+          songs={songs} 
+          handleDeleteSong={handleDeleteSong}
+          handleAddSong={handleAddSong}
+          />
+        </Suspense>
+      </div>)}
     </div>
+   
   );
 }
-
-export default App;

@@ -12,4 +12,4 @@ export function login(role) {
     if (!token) return null
     return JSON.parse(token).role
   }
-  
+    

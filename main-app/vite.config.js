@@ -1,12 +1,10 @@
-// vite.config.js
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
-import federation from '@originjs/vite-plugin-federation'
-import tailwindcss from '@tailwindcss/vite'
-export default defineConfig(({ mode }) => {
- 
-  const env = loadEnv(mode, process.cwd(), '')
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import federation from '@originjs/vite-plugin-federation';
 
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
   return {
     plugins: [
       react(),
@@ -14,23 +12,16 @@ export default defineConfig(({ mode }) => {
       federation({
         name: 'main_app',
         remotes: {
-          music_library: env.VITE_MUSIC_LIBRARY_URL,
+          music_library: env.VITE_MUSIC_LIBRARY_URL, // full URL to remoteEntry.js
         },
-        shared: ['react', 'react-dom'],
+        shared: ['react', 'react-dom', 'tailwindcss'],
       }),
     ],
-    server: {
-      port: 5000,
-    },
+    server: { port: 5000 },
     build: {
       target: 'esnext',
-      rollupOptions: {
-        output: {
-          entryFileNames: `assets/[name].js`,
-          chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`,
-        },
-      },
+      minify: false,
+      cssCodeSplit: false, // ensures host CSS works well
     },
-  }
-})
+  };
+});
