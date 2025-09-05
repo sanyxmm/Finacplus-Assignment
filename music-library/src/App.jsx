@@ -9,9 +9,9 @@ function MusicLibrary({ songs, addSong, deleteSong, role }) {
   }, {});
 
   return (
-    <div className="mt-6 bg-black  shadow-lg rounded-lg p-6">
+    <div className="mt-6 bg-white  shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-bold text-indigo-600 mb-4 text-center">
-        🎼  Library
+        🎼 Music Library
       </h2>
 
       {role === "admin" && (
