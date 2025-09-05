@@ -10,7 +10,7 @@ The project is split into:
 `## 🌐 Live Demo`
 
 - **Main App:** (https://mainapp-taupe.vercel.app/)]
-- **Music Library Microfrontend:** (https://vercel.com/sanyams-projects-b97ce7f4/musicapp)
+- **Music Library Microfrontend:** (https://musicapp-nine-alpha.vercel.app/)
 
 The main app dynamically loads the music library from its deployed URL.
 
