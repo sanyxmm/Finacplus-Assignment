@@ -15,9 +15,9 @@ export const SongCard = ({ song, userRole, onDelete }) => {
           className="w-full aspect-square object-cover rounded-t-2xl"
         />
         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-          <button className="bg-blue-500 hover:bg-blue-600 text-blue-500 p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
-            <Play className="w-6 h-6" />
-          </button>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+  <Play className="w-6 h-6" />
+</button>
         </div>
       </div>
 

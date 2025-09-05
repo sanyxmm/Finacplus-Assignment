@@ -121,9 +121,9 @@ export const MusicLibrary = ({userRole,handleLogout,songs,handleDeleteSong,handl
             {userRole === "admin" && (
               <button
                 onClick={() => setIsAddDialogOpen(true)}
-                className="flex items-center gap-1 px-3 py-2 bg-gray-600 text-black rounded hover:bg-gray-700 transition"
+                className="flex items-center gap-1 px-3 py-2 text-white bg-black  text-black rounded transition"
               >
-                <Plus className="w-4 h-4" /> Add Song
+                <Plus className="w-4 h-4 text-white" /> Add Song
               </button>
             )}
           </div>

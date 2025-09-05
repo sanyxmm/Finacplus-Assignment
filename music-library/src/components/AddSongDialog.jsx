@@ -134,7 +134,7 @@ export const AddSongDialog = ({ open, onOpenChange, onAddSong }) => {
             </button>
             <button
               type="submit"
-              className="px-4 py-2  text-black rounded hover:opacity-90"
+              className="px-4 py-2  text-white bg-black rounded hover:opacity-90"
             >
               Add Song
             </button>

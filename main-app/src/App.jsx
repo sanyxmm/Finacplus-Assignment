@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <div>
-         {!role?(<div className="flex items-center justify-center min-h-screen bg-gray-100">
+         {!role?(<div className="flex items-center justify-center h-[100vh] w-[100vw] bg-gray-100">
       <form
         onSubmit={handleLogin}
         className="bg-white p-8 rounded-2xl shadow-md w-96"
