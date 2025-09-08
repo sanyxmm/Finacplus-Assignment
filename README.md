@@ -50,7 +50,7 @@ npm install
 **Start Music Library first (remote):**
 ```bash
 cd music-library
-npm build
+npm run build
 npm run preview -- --port 5001
 # Runs on http://localhost:5001
 ```
