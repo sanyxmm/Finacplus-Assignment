@@ -1,5 +1,3 @@
-
-
 import { useState, useMemo } from "react";
 import { Search, Plus, Settings, Users, Music, LogOut } from "lucide-react";
 import { SongCard } from "./SongCard";
@@ -48,46 +46,45 @@ export const MusicLibrary = ({userRole,handleLogout,songs,handleDeleteSong,handl
   return (
     <div className="min-h-screen bg-white">
 
-      <div className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md shadow-md p-6 border-b border-gray-300">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900">
-              Music Library
-            </h1>
-            <p className="text-gray-600 mt-2">
-              Discover and organize your music collection
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
+<div className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md shadow-md p-4 sm:p-6 border-b border-gray-300">
+<div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4 ">
+  <div>
+    <h1 className="text-[1.7rem] sm:text-4xl font-bold text-gray-900">
+    Music Library
+    </h1>
+    <p className="text-[0.7rem] sm:text-[1rem] text-gray-600 mt-0.5 sm:mt-2">
+      Discover and organize your music collection
+    </p>
+  </div>
+  <div className="flex items-center gap-4">
             <span
-              className="px-3 py-1 rounded-full text-sm flex items-center gap-1 bg-blue-200 text-blue-800"
+              className="px-3 py-1 rounded-full text-[0.4rem] sm:text-[0.8rem] flex items-center gap-1 bg-blue-200 text-blue-800"
             >
-              {userRole === "admin" ? <Settings className="w-4 h-4" /> : <Users className="w-4 h-4" />}
+              {userRole === "admin" ? <Settings className="w-2 h-2 sm:w-4 sm:h-4" /> : <Users className="w-2 h-2 sm:w-4 sm:h-4" />}
               {userRole === "admin" ? "Admin" : "User"}
             </span>
             
-            <div className="flex border p-1 rounded-lg border-l-black pointer text-[14px]" onClick={handleLogout}><LogOut/> <span >&nbsp;Logout</span></div>
+            <div className="flex border p-1 rounded-lg border-l-black pointer text-[0.4rem] sm:text-[0.8rem]" onClick={handleLogout}><LogOut className="w-2 h-2 sm:w-4 sm:h-4" /> <span >&nbsp;Logout</span></div>
           </div>
         </div>
 
-  
-        <div className="flex flex-col lg:flex-row gap-4 mt-4">
-          <div className="flex flex-1 gap-2">
-            <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col lg:flex-row gap-2 sm:gap-4 mt-2 sm:mt-4 text-[0.5rem] sm:text-[1rem]">
+  <div className="flex flex-1 gap-1 sm:gap-2">
+    <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search music..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-3 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="pl-10 pr-3  py-1 sm:py-2  border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-gray-500"
               />
             </div>
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
-            >
+              className="border border-gray-300 rounded px-1 sm:px-3 py-1 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              >
               <option value="all">All Fields</option>
               <option value="title">Title</option>
               <option value="artist">Artist</option>
@@ -99,7 +96,7 @@ export const MusicLibrary = ({userRole,handleLogout,songs,handleDeleteSong,handl
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="border border-gray-300 rounded  px-1 sm:px-3 py-1 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               <option value="title">Title</option>
               <option value="artist">Artist</option>
@@ -111,7 +108,7 @@ export const MusicLibrary = ({userRole,handleLogout,songs,handleDeleteSong,handl
             <select
               value={groupBy}
               onChange={(e) => setGroupBy(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="border border-gray-300 rounded  px-1 sm:px-3 py-1 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               <option value="none">No Grouping</option>
               <option value="album">By Album</option>
