@@ -16,7 +16,7 @@ The main app dynamically loads the music library from its deployed URL.
 
 ---
 
-`## 🧑‍💻 Credentials for Demo`
+`## Credentials for Demo`
 
 | Role  |     Username        |              Password                 |
 |-------|---------------------|---------------------------------------|
@@ -25,7 +25,7 @@ The main app dynamically loads the music library from its deployed URL.
 
 ---
 
-`## 💻 How to Run Locally`
+`## How to Run Locally`
 
 `### 1. Clone the repository`
 ```bash
@@ -39,8 +39,8 @@ cd Finacplus-Assignment
 cd main-app
 npm install
 ```
+#create .env.local file in main app
 ```
-create .env.local file in main app
 VITE_MUSIC_LIBRARY_URL=http://localhost:5001/assets/remoteEntry.js
 ```
 **Music Library:**
