@@ -1,5 +1,4 @@
 import React, { useState ,Suspense } from "react";
-import { login, logout } from "./auth";
 import { mockSongs } from './data/mockSongs';
 
 import "./index.css";
@@ -10,10 +9,9 @@ export default function App() {
   const [songs,setSongs] = useState(mockSongs)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState(""); // to store logged-in role
+  const [role, setRole] = useState(""); 
   const [error, setError] = useState("");
 
-  // Hardcoded credentials
   const credentials = {
     admin: { id: "admin", password: "admin123" },
     user: { id: "user", password: "user123" },
@@ -26,18 +24,15 @@ export default function App() {
   const handleLogin = () => {
     if (username === credentials.admin.id && password === credentials.admin.password) {
       setRole("admin");
-      login("admin");
       setError("");
     } else if (username === credentials.user.id && password === credentials.user.password) {
       setRole("user");
-      login("user");
       setError("");
     } else {
       setError("Invalid username or password");
     }
   };
   const handleLogout = () => {
-    logout();
     setRole(null);
   };
 
