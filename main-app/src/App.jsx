@@ -4,11 +4,20 @@ import "./index.css";
 
 const MusicLibrary = React.lazy(() => import("music_library/App"));
 
-export default function App() {
-  return (
-    <AppProvider>
-       const { role, username, setUsername, password, setPassword, error,
-    handleLogin, handleLogout, songs, handleDeleteSong, handleAddSong, } = useContext(AppContext);
+function AppContent() {
+  const {
+    role,
+    username,
+    setUsername,
+    password,
+    setPassword,
+    error,
+    handleLogin,
+    handleLogout,
+    songs,
+    handleDeleteSong,
+    handleAddSong,
+  } = useContext(AppContext);
 
   return (
     <div>
@@ -66,6 +75,12 @@ export default function App() {
       )}
     </div>
   );
+}
+
+export default function App() {
+  return (
+    <AppProvider>
+      <AppContent />
     </AppProvider>
   );
 }
