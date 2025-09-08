@@ -39,6 +39,10 @@ cd Finacplus-Assignment
 cd main-app
 npm install
 ```
+```
+create .env.local file in main app
+VITE_MUSIC_LIBRARY_URL=http://localhost:5001/assets/remoteEntry.js
+```
 **Music Library:**
 ```bash
 cd ../music-library
